@@ -12,9 +12,9 @@ public class ResourceServerConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .mvcMatcher("/messages/**")
+                .securityMatcher("/messages/**")
                 .authorizeHttpRequests()
-                .mvcMatchers("/messages/**").hasAuthority("SCOPE_message.read")
+                .requestMatchers("/messages/**").hasAuthority("SCOPE_message.read")
                 .and()
                 .oauth2ResourceServer()
                 .jwt();
